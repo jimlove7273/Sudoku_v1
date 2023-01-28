@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { puzzles } from "./components/Puzzles";
+import "./App.css";
 
-function App() {
+import { Board } from "./components/Board";
+import { NumKeys } from "./components/NumKeys";
+
+export default function App() {
+  let gameround = puzzles[0].puzzle.split("");
+
+  const [gameInProgress, setGameInProgress] = useState(gameround);
+  const [cellClicked, setCellClicked] = useState(0);
+  const [userNumbers, setUserNumbers] = useState<string[]>(
+    new Array(81).fill(".")
+  );
+  const [keyboardOn, setKeyboardOn] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="header">Sudoku</div>
+      <div className="game-screen">
+        <Board
+          userNumbers={userNumbers}
+          setUserNumbers={setUserNumbers}
+          cellClicked={cellClicked}
+          setCellClicked={setCellClicked}
+          gameInProgress={gameInProgress}
+          setKeyboardOn={setKeyboardOn}
+        />
+      </div>
+      {keyboardOn && (
+        <NumKeys
+          userNumbers={userNumbers}
+          setUserNumbers={setUserNumbers}
+          gameInProgress={gameInProgress}
+          setGameInProgress={setGameInProgress}
+          cellClicked={cellClicked}
+          setCellClicked={setCellClicked}
+          setKeyboardOn={setKeyboardOn}
+        />
+      )}
+      <br />
+    </>
   );
 }
-
-export default App;

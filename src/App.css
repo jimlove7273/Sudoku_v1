@@ -1,38 +1,110 @@
-.App {
+* {
+  font-family: verdana;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.header {
+  margin: 2rem;
   text-align: center;
+  font-size: 2em;
+  font-weight: 600;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-screen {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.game-board {
+  width: 272px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.game-board .cell {
+  display: flex;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  width: 30px;
+  height: 30px;
+}
+
+.game-board .cell:nth-child(3n+3) {
+  border-right: 2px solid #000;
+}
+
+.game-board .cell:nth-child(27n+19),
+.game-board .cell:nth-child(27n+20),
+.game-board .cell:nth-child(27n+21),
+.game-board .cell:nth-child(27n+22),
+.game-board .cell:nth-child(27n+23),
+.game-board .cell:nth-child(27n+24),
+.game-board .cell:nth-child(27n+25),
+.game-board .cell:nth-child(27n+26),
+.game-board .cell:nth-child(27n+27)
+{
+  border-bottom: 2px solid #000;
+}
+
+.game-board .cell .game-piece {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  background-color: #fff;
+  border: 0;
+}
+
+.game-board .cell .game-piece.active:not(:focus):not(.red) {
+  background-color: #fff;
+}
+
+.game-board .cell .game-piece.active {
+  background-color: #7294b7;
+}
+
+.game-board .cell .game-piece.red {
+  color: #af1515;
+  font-weight: bold;
+}
+
+.game-board .cell .game-piece.blue {
+  color: #2600ff;
+}
+
+.numbers-keys {
+  margin-top: 2rem;
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  display: flex;
+}
+
+.numbers-keys > div {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e2e2e2;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.numbers-keys > div.btn-cancel,
+.numbers-keys > div.btn-clear
+ {
+  width: auto;
+  padding: 0 1rem;
 }

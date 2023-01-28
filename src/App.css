@@ -60,12 +60,12 @@ body {
 .game-board .cell .game-piece {
   width: 100%;
   height: 100%;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #fff;
   border: 0;
 }
 
-.game-board .cell .game-piece.active:not(:focus):not(.red) {
+.game-board .cell .game-piece.active:not(:focus):not(.red):not(.active) {
   background-color: #fff;
 }
 
@@ -93,6 +93,7 @@ body {
 .numbers-keys > div {
   width: 30px;
   height: 30px;
+  font-size: 14px;
   display: flex;
   border-radius: 5px;
   justify-content: center;

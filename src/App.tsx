@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <>
-      <div className="header">Sudoku</div>
+      <div className="header">Sudoku v1</div>
       <div className="game-screen">
         <Board
           userNumbers={userNumbers}
